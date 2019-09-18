@@ -1,0 +1,18 @@
+<div id="page">
+  <h1>AdminLogin</h1>
+<form [formGroup]="loginForm" role="form">
+    <table>
+        <tr><td>Enter Username</td><td><input [(ngModel)]="adminl.username" formControlName="username">
+             <label  *ngIf="loginForm.get('username').invalid && processValidation" [ngClass] = "'error'"> Username is required. </label>
+         </td></tr>
+        <tr><td>Enter Password</td><td><input [(ngModel)]="adminl.password" formControlName="password">
+             <label  *ngIf="loginForm.get('password').invalid && processValidation" [ngClass] = "'error'"> Password is required. </label>
+      </td></tr>	
+        <tr><td colspan="2">
+           
+          <button (click)="adminLogin()">Login</button>  
+      </td></tr>
+      </table>
+
+ </form> 
+ </div>

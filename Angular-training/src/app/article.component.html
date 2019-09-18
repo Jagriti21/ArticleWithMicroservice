@@ -1,7 +1,12 @@
+<br>
+<a routerLink="/l1"><button>Admin Login</button></a>
 <h1>Angular 2 CRUD Operation</h1>
 <h3 *ngIf="articleIdToUpdate; else create"> 
    Update Article for Id: {{articleIdToUpdate}}
 </h3>
+
+
+
 <ng-template #create>
    <h3> Create New Article </h3>
 </ng-template>
@@ -14,9 +19,14 @@
         <tr><td>Enter Title</td><td><input formControlName="title">
              <label *ngIf="articleForm.get('title').invalid && processValidation" [ngClass] = "'error'"> Title is required. </label>
          </td></tr>
-        <tr><td>Enter Category</td><td><input formControlName="category">
+         <tr><td>Enter Category</td><td>
+          <select formControlName="category">
+          <option *ngFor="let category of allCategorys" [value]="category.categoryname">
+            {{category.categoryname}}
+          </option>
+      </select>
              <label *ngIf="articleForm.get('category').invalid && processValidation" [ngClass] = "'error'"> Category is required. </label>
-      </td></tr>	
+      </td></tr>
 
       <tr><td>  Enter Author Name</td><td><input formControlName="authorName">
     <label *ngIf="articleForm.get('authorName').invalid && processValidation" [ngClass] = "'error'"> Author Name is required. </label>

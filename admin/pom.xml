@@ -5,19 +5,17 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.7.RELEASE</version>
+		<version>2.1.8.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.article</groupId>
-	<artifactId>articleMicroservice</artifactId>
+	<artifactId>admin</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
-	<name>UserEnt</name>
+	<name>user</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
-		<spring-cloud-services.version>2.1.4.RELEASE</spring-cloud-services.version>
 		<spring-cloud.version>Greenwich.SR2</spring-cloud.version>
 	</properties>
 
@@ -30,64 +28,24 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-<dependency>
-   <groupId>com.jayway.restassured</groupId>
-   <artifactId>rest-assured</artifactId>
-   <version>2.9.0</version>
-   <scope>test</scope>
-</dependency>
-
-<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-<dependency>
-    <groupId>org.junit.jupiter</groupId>
-    <artifactId>junit-jupiter-api</artifactId>
-    <version>5.5.1</version>
-    <scope>test</scope>
-</dependency>
-
-
-		<dependency>
-   <groupId>org.hamcrest</groupId>
-   <artifactId>hamcrest-all</artifactId>
-   <version>1.3</version>
-   <scope>test</scope>
-</dependency>
-
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			  <version>8.0.17</version>
-			<scope>runtime</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-			<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
 	</dependencies>
 
-
-<dependencyManagement>
+	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
@@ -99,30 +57,13 @@
 		</dependencies>
 	</dependencyManagement>
 
-<repositories>
-	 	<repository>
-	 		<id>spring-milestones</id>
-	 		<name>Spring Milestones</name>
-	 		<url>https://repo.spring.io/milestone</url>
-	 	</repository>
-	 </repositories>
-
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			 <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.19.1</version>
-        </plugin>
 		</plugins>
-       
-  
 	</build>
-	
-	
 
 </project>

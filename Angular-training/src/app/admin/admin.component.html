@@ -1,0 +1,64 @@
+
+   <div id="page">
+     <br>
+      <button (click)="adminLogout()">Logout</button> 
+      <br>
+    <h1>Angular CRUD Operation: Category</h1>
+
+    
+
+    <h3 *ngIf="categoryIdToUpdate; else create"> 
+       Update Category for Id: {{categoryIdToUpdate}}
+    </h3>
+    <ng-template #create>
+       <h3> Create New Category </h3>
+    </ng-template>
+  
+    <div>
+    <form [formGroup]="categoryForm" (ngSubmit)="onCategoryFormSubmit()">
+     <table>
+        <tr><td>Enter Category</td><td><input formControlName="categoryname">
+            <label *ngIf="categoryForm.get('categoryname').invalid && processValidation" [ngClass] = "'error'"> Category is required. </label>
+     </td></tr>	
+     
+   
+   <button *ngIf="!categoryIdToUpdate">CREATE</button>  
+   <button *ngIf="categoryIdToUpdate">UPDATE</button>  
+     <button (click)="backToCreateCategory()" *ngIf="categoryIdToUpdate">Go Back</button>  
+       
+     </table>
+   
+      
+   </form> 
+    <br/>
+    <div *ngIf="statusCode; else processing">
+      <div *ngIf="statusCode === 201" [ngClass] = "'success'">
+         Category added successfully.
+      </div>   
+      <div *ngIf="statusCode === 409" [ngClass] = "'success'">
+        Category already exists.
+      </div>   	
+      <div *ngIf="statusCode === 200" [ngClass] = "'success'">
+           Category updated successfully.
+      </div>   	      
+      <div *ngIf="statusCode === 204" [ngClass] = "'success'">
+           Category deleted successfully.
+      </div>   	   
+      <div *ngIf="statusCode === 500" [ngClass] = "'error'">
+           Internal Server Error.
+      </div>   	
+    </div>
+    <ng-template #processing>
+     <img *ngIf="requestProcessing" src="assets/images/loading.gif">
+    </ng-template>
+   </div>
+   <h3>Category Details</h3>
+  <table>
+    <tr><th> Id</th><th>Category</th><th>Edit</th><th>Delete</th>
+    <tr *ngFor="let category of allCategory" >
+      <td>{{category.categoryId}}</td> <td>{{category.categoryname}}</td> 
+        <td><button type="button" (click)="loadCategoryToEdit(category.categoryId)">Edit</button> </td> 
+    <td><button type="button" (click)="deleteCategory(category.categoryId)">Delete</button></td>
+    </tr>
+  </table>
+  </div>

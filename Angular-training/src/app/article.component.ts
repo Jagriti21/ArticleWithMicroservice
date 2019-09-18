@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { ArticleService } from './article.service';
 import { Article } from './article';
+import { Category } from './category';
+import { CategoryService } from './category.service';
 
 @Component({
    selector: 'app-article',
@@ -11,6 +13,7 @@ import { Article } from './article';
 })
 export class ArticleComponent implements OnInit { 
    //Component properties
+   allCategorys: Category[];
    allArticles: Article[];
    statusCode: number;
    requestProcessing = false;
@@ -25,11 +28,12 @@ export class ArticleComponent implements OnInit {
        dateTime1: new FormControl('', Validators.required)   
    });
    //Create constructor to get service instance
-   constructor(private articleService: ArticleService) {
+   constructor(private articleService: ArticleService, private categoryService: CategoryService) {
    }
-   //Create ngOnInit() and and load articles
+   //Create ngOnInit() and  load articles and load categories
    ngOnInit(): void {
-	   this.getAllArticles();
+      this.getAllArticles();
+      this.getAllCategories();
    }   
    //Fetch all articles
    getAllArticles() {
@@ -39,6 +43,14 @@ export class ArticleComponent implements OnInit {
                 errorCode =>  this.statusCode = errorCode);   
    }
 
+    //Fetch all categories
+   
+    getAllCategories() {
+      this.categoryService.getAllCategory()
+      .subscribe(
+              data => this.allCategorys = data,
+              errorCode =>  this.statusCode = errorCode);   
+ }
 
    //Handle create and update article
    onArticleFormSubmit() {
