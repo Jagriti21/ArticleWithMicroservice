@@ -1,0 +1,31 @@
+zuul:
+ prefix: /apigateway
+ routes: 
+  resource:
+     ADMIN-SERVICE:
+      path: /admin/**
+      serviceId: user-service
+     ARTICLE-MICRO:
+      path: /atcl/**
+      serviceId: Article-Micro
+      
+server:
+ port: 8093
+
+
+spring:
+ application:
+  name: zuul
+  
+management:
+endpoint:
+ routes:
+  enabled: true
+  
+endpoints:
+ restart:
+  enabled: true
+ shutdown:
+  enabled: true
+ health:
+  sensetive: true
